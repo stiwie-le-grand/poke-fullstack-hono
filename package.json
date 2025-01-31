@@ -1,0 +1,21 @@
+{
+  "name": "hono-devex-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "gen:server": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=tools/plop/server.ts",
+    "gen:client": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=tools/plop/client.ts",
+    "dev:server": "pnpm --filter=./apps/server dev",
+    "dev:client": "pnpm --filter=./apps/client dev",
+    "dev": "pnpm --filter=./apps/* dev"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "plop": "^4.0.1",
+    "tsx": "^4.19.2"
+  }
+}

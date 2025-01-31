@@ -1,0 +1,8 @@
+import { createRoute } from "../../app";
+import * as handlers from './{{routeName}}.handlers';
+import * as routes from './{{routeName}}.routes'; 
+
+const router = createRoute(); 
+router.openapi(routes.defaultRoute, handlers.defaultHandler); 
+
+export const {{routeName}}Router = router;
