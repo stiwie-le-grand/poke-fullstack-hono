@@ -9,6 +9,7 @@ expand(config());
 const envSchema = z.object({
   PORT: z.coerce.number(),
   HOSTNAME: z.string().default("localhost"),
+  POKEMONTCG_API_KEY: z.string(),
 });
 
 // Validate `process.env` against "envSchema"

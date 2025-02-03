@@ -6,25 +6,20 @@ import {
   multipleItemsResponseSchema,
   serverErrorSchema,
 } from "../../lib/schemas/returnSchema";
+import { cardSchema } from "../../types/Pokemon";
 
 export const defaultRoute = createRoute({
   method: "get",
   tags: ["Pokemon"],
-  request: {
+  /*   request: {
     params: z.object({}),
-  },
+  }, */
   description: "",
   summary: "",
-  path: "/api/pokemon",
+  path: "/api/pokemon/random-5",
   responses: {
     [HttpStatusCodes.OK]: jsonContent(
-      multipleItemsResponseSchema(
-        z.object({
-          id: z.string(),
-          name: z.string(),
-          type: z.string(),
-        })
-      ),
+      multipleItemsResponseSchema(cardSchema),
       "List of match metadata"
     ),
     [HttpStatusCodes.INTERNAL_SERVER_ERROR]: jsonContent(
