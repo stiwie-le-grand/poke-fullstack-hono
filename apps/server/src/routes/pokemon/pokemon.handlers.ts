@@ -10,7 +10,7 @@ type Pokemon = {
   name: string;
   isLegendary: boolean;
   isMythical: boolean;
-  imageUrl: string | undefined;
+  imageUrl: string;
 };
 
 const getPokemon = async (id: number): Promise<Pokemon | null> => {

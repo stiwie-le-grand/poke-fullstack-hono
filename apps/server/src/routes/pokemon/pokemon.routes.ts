@@ -22,7 +22,7 @@ export const getPokemons = createRoute({
         z.object({
           id: z.number(),
           name: z.string(),
-          imageUrl: z.string().optional(),
+          imageUrl: z.string(),
           isLegendary: z.boolean().optional(),
           isMythical: z.boolean().optional(),
         })
