@@ -3,7 +3,7 @@ import { apiReference } from "@scalar/hono-api-reference";
 import { AppOPenAPI } from "../types/App";
 
 export function configureOpenAPI(app: AppOPenAPI) {
-  app.doc("/openAPI", {
+  app.doc("/oas", {
     openapi: "3.0.0",
     info: {
       title: "Open API documentation",
@@ -16,7 +16,7 @@ export function configureOpenAPI(app: AppOPenAPI) {
     "/scalar",
     apiReference({
       spec: {
-        url: "/openAPI",
+        url: "/oas",
       },
     })
   );
@@ -24,7 +24,7 @@ export function configureOpenAPI(app: AppOPenAPI) {
   app.get(
     "/swagger",
     swaggerUI({
-      url: "/openAPI",
+      url: "/oas",
     })
   );
 }

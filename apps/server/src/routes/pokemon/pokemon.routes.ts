@@ -7,7 +7,7 @@ import {
   serverErrorSchema,
 } from "../../lib/schemas/returnSchema";
 
-export const defaultRoute = createRoute({
+export const getPokemons = createRoute({
   method: "get",
   tags: ["Pokemon"],
   request: {
@@ -20,9 +20,11 @@ export const defaultRoute = createRoute({
     [HttpStatusCodes.OK]: jsonContent(
       multipleItemsResponseSchema(
         z.object({
-          id: z.string(),
+          id: z.number(),
           name: z.string(),
-          type: z.string(),
+          imageUrl: z.string().optional(),
+          isLegendary: z.boolean().optional(),
+          isMythical: z.boolean().optional(),
         })
       ),
       "List of match metadata"
@@ -33,5 +35,3 @@ export const defaultRoute = createRoute({
     ),
   },
 });
-
-export type PokemonRoute = typeof defaultRoute;
