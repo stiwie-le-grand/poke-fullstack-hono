@@ -5,12 +5,14 @@
     "dev": "tsx watch node/index.ts",
     "build": "esbuild --bundle --outfile=./dist/index.js --platform=node --target=node20 ./lambda/index.ts",
     "zip": "zip -j lambda.zip dist/index.js",
-    "update": "aws lambda update-function-code --zip-file fileb://lambda.zip --function-name hello",
-    "deploy": "run-s build zip update"
+    "deploy": "run-s build zip update",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "devDependencies": {
     "@types/node": "^22.12.0",
     "esbuild": "^0.21.4",
+    "jsdom": "^26.0.0",
     "npm-run-all2": "^6.2.0",
     "tsx": "^4.19.2"
   },
@@ -22,6 +24,8 @@
     "dotenv": "^16.4.7",
     "dotenv-expand": "^12.0.1",
     "hono": "^4.6.20",
+    "vitest": "^3.0.9",
+    "vitest-fetch-mock": "^0.4.5",
     "zod": "^3.24.1"
   }
 }

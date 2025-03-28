@@ -6,7 +6,14 @@
   "scripts": {
     "dev:server": "pnpm --filter=./apps/server dev",
     "dev:client": "pnpm --filter=./apps/client dev",
-    "dev": "pnpm --filter=./apps/* dev"
+    "dev": "pnpm --filter=./apps/* dev",
+    "type-check": "pnpm --filter=./apps/* type-check",
+    "lint": "pnpm --filter=./apps/* lint",
+    "lint:fix": "pnpm --filter=./apps/* lint:fix",
+    "format-check": "pnpm --filter=./apps/* format-check",
+    "test": "pnpm --filter=./apps/* test",
+    "build": "pnpm --filter=./apps/* build",
+    "check-all": "pnpm lint && pnpm type-check && pnpm format-check && pnpm test"
   },
   "keywords": [],
   "author": "",
