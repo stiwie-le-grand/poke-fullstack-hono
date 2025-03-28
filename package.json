@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "gen:server": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=tools/plop/server.ts",
-    "gen:client": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=tools/plop/client.ts",
     "dev:server": "pnpm --filter=./apps/server dev",
     "dev:client": "pnpm --filter=./apps/client dev",
     "dev": "pnpm --filter=./apps/* dev"

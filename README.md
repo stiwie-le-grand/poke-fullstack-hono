@@ -16,6 +16,68 @@ This repository is a starter template for building full-stack applications using
 - **TypeScript support** for type safety across the stack
 - **Zero-config setup** to get started immediately
 
+## Getting Started
+
+### Prerequisites
+
+Ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/)
+- [pnpm](https://pnpm.io/)
+
+### Installation
+
+Clone the repository and install dependencies:
+
+```sh
+git clone https://github.com/stiwie-le-grand/hono-mono-starter
+cd hono-mono-starter
+pnpm install
+```
+
+### Running the Project
+
+#### Start API
+
+```sh
+pnpm run dev:server
+```
+
+#### Start Frontend
+
+```sh
+pnpm run dev:client
+```
+
+#### Start Frontend + API in the same process
+
+```sh
+pnpm run dev
+```
+
+#### Generate types
+
+```sh
+cd apps/client
+pnpm generate-types
+```
+
+The frontend will be available at `http://localhost:5173` by default, and the backend at `http://localhost:3000` respectively.
+
+## Folder Structure
+
+```
+/
+│── apps/
+│   ├── client/   # React Application
+│   ├── server/   # Hono API Server
+│       ├── lambda/
+│       ├── src/
+│           ├── lib/
+│           ├── routes/
+│           ├── types/
+```
+
 ## Tech Stack
 
 ### Backend - Hono 🔥
@@ -48,56 +110,10 @@ const App = () => {
 export default App;
 ```
 
-## Getting Started
+## Why Use This Starter and Hono?
 
-### Prerequisites
-
-Ensure you have the following installed:
-
-- [Node.js](https://nodejs.org/)
-- [pnpm](https://pnpm.io/)
-
-### Installation
-
-Clone the repository and install dependencies:
-
-```sh
-git clone https://github.com/your-repo/monorepo-starter.git
-cd monorepo-starter
-pnpm install
-```
-
-### Running the Project
-
-#### Start Backend
-
-```sh
-pnpm run dev:server
-```
-
-#### Start Frontend
-
-```sh
-pnpm run dev:client
-```
-
-The frontend will be available at `http://localhost:3000`, and the backend at `http://localhost:4000`.
-
-## Folder Structure
-
-```
-monorepo-starter/
-│── apps/
-│   ├── client/   # React Application
-│   ├── server/   # Hono API Server
-│       ├── lambda/
-│       ├── src/
-│           ├── lib/
-│           ├── routes/
-│           ├── types/
-```
-
-## Why Use This Starter?
-
-- 🚀 **Blazing fast**: Hono is one of the fastest web frameworks.
+- 🚀 **Blazing fast**: Fast, lightweight, built on Web Standards. Support for any JavaScript runtime.
 - 🏗 **Modular monorepo**: Easy package sharing and dependency management.
+- 🚠 **Hono is getting traction**: More and more people is switching and trying out this powerhouse:
+  - https://2024.stateofjs.com/en-US/other-tools/#backend_frameworks
+  - https://risingstars.js.org/2024/en

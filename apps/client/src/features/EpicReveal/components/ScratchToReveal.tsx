@@ -10,6 +10,7 @@ interface ScratchToRevealProps {
   className?: string;
   onComplete?: () => void;
   gradientColors?: [string, string, string];
+  specialEffect?: boolean;
 }
 
 export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
@@ -20,6 +21,7 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
   children,
   className,
   gradientColors = ["#A97CF8", "#F38CB8", "#FDCC92"],
+  specialEffect = false,
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [isScratching, setIsScratching] = useState(false);
@@ -107,11 +109,18 @@ export const ScratchToReveal: React.FC<ScratchToRevealProps> = ({
   };
 
   const startAnimation = async () => {
-    await controls.start({
-      scale: [1, 1.5, 1],
-      rotate: [0, 10, -10, 10, -10, 0],
-      transition: { duration: 0.5 },
-    });
+    if (specialEffect) {
+      await controls.start({
+        scale: [1, 1.5, 1],
+        transition: { duration: 0.5 },
+      });
+    } else {
+      await controls.start({
+        scale: [1, 1.5, 1],
+        rotate: [0, 10, -10, 10, -10, 0],
+        transition: { duration: 0.5 },
+      });
+    }
 
     // Call onComplete after animation finishes
     if (onComplete) {

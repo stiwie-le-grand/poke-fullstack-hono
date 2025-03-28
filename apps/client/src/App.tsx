@@ -1,4 +1,3 @@
-import "./App.css";
 import pokemonLogo from "./assets/pokemon.png";
 import { EpicReveal } from "./features/EpicReveal/EpicReveal";
 import { useFetchPokemon } from "./hooks/useFetchPokemon";
@@ -8,7 +7,7 @@ function App() {
 
   return (
     <>
-      <div className="w-full flex items-center justify-center flex-col">
+      <div className="w-full flex items-center justify-center flex-col px-16">
         <img
           src={pokemonLogo}
           className="max-w-sm select-none pointer-events-none"
