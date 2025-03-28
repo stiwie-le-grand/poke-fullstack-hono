@@ -35,6 +35,41 @@ export type GetApiPokemonResponses = {
 
 export type GetApiPokemonResponse = GetApiPokemonResponses[keyof GetApiPokemonResponses];
 
+export type GetApiAdvancedPokemonData = {
+    body?: never;
+    path?: never;
+    query?: never;
+    url: '/api/advanced-pokemon';
+};
+
+export type GetApiAdvancedPokemonErrors = {
+    /**
+     * Internal Server Error
+     */
+    500: {
+        message: string;
+    };
+};
+
+export type GetApiAdvancedPokemonError = GetApiAdvancedPokemonErrors[keyof GetApiAdvancedPokemonErrors];
+
+export type GetApiAdvancedPokemonResponses = {
+    /**
+     * List of match metadata
+     */
+    200: {
+        items: Array<{
+            id: number;
+            name: string;
+            imageUrl: string;
+            isLegendary?: boolean;
+            isMythical?: boolean;
+        }>;
+    };
+};
+
+export type GetApiAdvancedPokemonResponse = GetApiAdvancedPokemonResponses[keyof GetApiAdvancedPokemonResponses];
+
 export type ClientOptions = {
     baseUrl: 'http://localhost:3000' | (string & {});
 };

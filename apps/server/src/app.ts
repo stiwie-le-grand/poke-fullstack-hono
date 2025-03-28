@@ -3,6 +3,7 @@ import { configureOpenAPI } from "./lib/open-api";
 import { pokemonRouter } from "./routes/pokemon/pokemon.index";
 import { AppBindings } from "./types/App";
 import { cors } from "hono/cors";
+import { advancedPokemonRouter } from "./routes/advanced/pokemon.index";
 
 const app = createRoute();
 
@@ -13,7 +14,7 @@ app.use("/*", cors());
 configureOpenAPI(app);
 
 // Attach routes to main router's root path, it could also be attached to /api
-const routes = [pokemonRouter];
+const routes = [pokemonRouter, advancedPokemonRouter];
 routes.forEach((route) => app.route("/", route));
 
 export default app;

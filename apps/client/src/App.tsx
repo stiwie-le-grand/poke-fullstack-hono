@@ -24,7 +24,7 @@ function App() {
         </div>
 
         <div className="flex flex-wrap gap-4">
-          {pokemons?.map((pokemon) => (
+          {pokemons.map((pokemon) => (
             <EpicReveal
               imageUrl={pokemon.imageUrl}
               isLegendary={pokemon.isLegendary}

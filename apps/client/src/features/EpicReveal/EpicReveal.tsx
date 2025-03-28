@@ -18,14 +18,13 @@ export const EpicReveal: React.FC<EpicRevealProps> = ({
   const confettiRef = useRef<ConfettiRef>(null);
   const [revealed, setRevealed] = useState(false);
 
-  const celebrate = (isLegendary || isMythical) && revealed;
-  console.log(celebrate);
+  const reasonToCelebrate = (isLegendary || isMythical) && revealed;
 
   useEffect(() => {
-    if (celebrate) {
+    if (reasonToCelebrate) {
       confettiRef.current?.fire({});
     }
-  }, [celebrate]);
+  }, [reasonToCelebrate]);
 
   useEffect(() => {
     setRevealed(false);
@@ -36,17 +35,17 @@ export const EpicReveal: React.FC<EpicRevealProps> = ({
       width={200}
       height={250}
       minScratchPercentage={70}
-      className="flex items-center justify-center overflow-hidden rounded-2xl border-2 bg-gray-100 p-4"
+      className="flex items-center justify-center overflow-hidden rounded-2xl  bg-gray-100 p-4 shadow-lg"
       gradientColors={["#A97CF8", "#F38CB8", "#FDCC92"]}
       onComplete={() => setRevealed(true)}
       key={name}
     >
-      {celebrate && (
+      {reasonToCelebrate && (
         <Confetti
           ref={confettiRef}
           className="absolute left-0 top-0 z-0 size-full"
           onMouseEnter={() => {
-            if (celebrate) confettiRef.current?.fire({});
+            if (reasonToCelebrate) confettiRef.current?.fire({});
           }}
         />
       )}
