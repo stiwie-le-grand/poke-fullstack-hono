@@ -3,7 +3,7 @@ import { getPokemons } from "../pokemon.routes";
 import { PokemonService } from "../services/pokemon.service";
 
 export class PokemonController {
-  private readonly pokemonService: PokemonService;
+  private pokemonService: PokemonService;
 
   constructor() {
     this.pokemonService = new PokemonService();

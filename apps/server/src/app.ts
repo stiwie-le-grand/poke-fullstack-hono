@@ -1,11 +1,10 @@
-import { OpenAPIHono } from "@hono/zod-openapi";
+import { cors } from "hono/cors";
+import { createApp } from "./lib/createApp";
 import { configureOpenAPI } from "./lib/open-api";
 import { pokemonRouter } from "./routes/pokemon/pokemon.index";
-import { AppBindings } from "./types/App";
-import { cors } from "hono/cors";
-import { advancedPokemonRouter } from "./routes/advanced/pokemon.index";
+import { advancedPokemonRouter } from "./routes/advanced-pokemon/pokemon.index";
 
-const app = createRoute();
+const app = createApp();
 
 /* CRITICAL-TODO: DONT DO THIS IN PROD!! MAKE SURE TO USE SECURE CORS SETTINGS! */
 app.use("/*", cors());
@@ -18,11 +17,3 @@ const routes = [pokemonRouter, advancedPokemonRouter];
 routes.forEach((route) => app.route("/", route));
 
 export default app;
-
-// Used to create the root app route and further subroutes
-export function createRoute() {
-  return new OpenAPIHono<AppBindings>({
-    // last path is directory or not
-    strict: false,
-  });
-}

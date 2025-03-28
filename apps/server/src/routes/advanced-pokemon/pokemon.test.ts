@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { pokemonRouter } from "./pokemon.index";
+import { advancedPokemonRouter } from "./pokemon.index";
 import createFetchMock from "vitest-fetch-mock";
 
 const fetchMocker = createFetchMock(vi);
@@ -29,7 +29,9 @@ describe("Pokemon API", () => {
       })
     );
 
-    const response = await pokemonRouter.request(`/api/pokemon`);
+    const response = await advancedPokemonRouter.request(
+      `/api/advanced-pokemon`
+    );
     const result = await response.json();
 
     expect(response.status).toBe(200);
