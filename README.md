@@ -12,9 +12,11 @@ This repository is a starter template for building full-stack applications using
 
 - **Monorepo architecture** using `pnpm workspaces`
 - **Backend** powered by Hono, optimized for speed and minimal footprint
-- **Frontend** built with React, offering a fast and interactive UI
-- **TypeScript support** for type safety across the stack
-- **Zero-config setup** to get started immediately
+- **TypeScript support** for type safety across the stack - Fully typed routes
+- **Zero-config setup | Batteries included** to get started immediately
+- **OAS, SWAGGER, SCALAR** available aout of the box
+- **Runs on multiple runtimes** depending on the usecase hono is able to run on Deno, Bun, Node, hence AWS (Λλ or EC2)
+- **E2E type safety with @hey-api/openapi** the frontend syncs with the API OAS schema
 
 ## Getting Started
 
