@@ -27,7 +27,7 @@ export const getPokemons = createRoute({
           isMythical: z.boolean().optional(),
         })
       ),
-      "List of match metadata"
+      "List of pokemons"
     ),
     [HttpStatusCodes.INTERNAL_SERVER_ERROR]: jsonContent(
       serverErrorSchema,
