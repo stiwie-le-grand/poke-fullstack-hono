@@ -20,7 +20,7 @@ export type GetApiPokemonError = GetApiPokemonErrors[keyof GetApiPokemonErrors];
 
 export type GetApiPokemonResponses = {
     /**
-     * List of match metadata
+     * List of pokemons
      */
     200: {
         items: Array<{
@@ -55,7 +55,7 @@ export type GetApiAdvancedPokemonError = GetApiAdvancedPokemonErrors[keyof GetAp
 
 export type GetApiAdvancedPokemonResponses = {
     /**
-     * List of match metadata
+     * List of pokemons
      */
     200: {
         items: Array<{
