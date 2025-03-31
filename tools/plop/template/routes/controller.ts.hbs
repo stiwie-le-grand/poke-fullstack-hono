@@ -1,0 +1,18 @@
+import { AppRouteHandler } from "../../types/App";
+import { listUnauthenticated } from "./{{routeName}}.routes";
+import { {{toPascalCase routeName}}Service } from "./{{routeName}}.service";
+
+export class {{toPascalCase routeName}}Controller {
+  private {{toPascalCase routeName}}Service: {{toPascalCase routeName}}Service;
+
+  constructor() {
+    this.{{toPascalCase routeName}}Service = new {{toPascalCase routeName}}Service();
+  }
+
+  public list{{routeName}}: AppRouteHandler<typeof listUnauthenticated> = async (c) => {
+    // Implement the logic to list
+    const result = await this.{{toPascalCase routeName}}Service.list{{routeName}}s();
+
+    return c.json({ items: result }, 200);
+  };
+}

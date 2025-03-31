@@ -1,28 +1,51 @@
-import * as HttpStatusCodes from "../../lib/httpStatusCodes";
-import * as HttpStatusPhrases from "../../lib/httpStatusPhrases";
 import { createRoute, z } from "@hono/zod-openapi";
+import { createProtectedRoute } from "../../lib/createProtectedRoute";
 import {
   jsonContent,
   multipleItemsResponseSchema,
+  singleItemResponseSchema,
   serverErrorSchema,
 } from "../../lib/schemas/returnSchema";
+import * as HttpStatusCodes from "@/lib/httpStatusCodes";
+import * as HttpStatusPhrases from "@/lib/httpStatusPhrases";
 
-export const defaultRoute = createRoute({
-  method: 'get',
-  tags: ['{{toPascalCase routeName}}'],
-    request: {
+export const listUnauthenticated = createRoute({
+  method: "get",
+  tags: ["{{routeName}}s"],
+  path: "/{{routeName}}s",
+  description: "List all {{routeName}}s",
+  summary: `List all {{routeName}}s`,
+  responses: {
+    [HttpStatusCodes.OK]: jsonContent(
+      multipleItemsResponseSchema(z.string()),
+      HttpStatusPhrases.OK,
+    ),
+    [HttpStatusCodes.INTERNAL_SERVER_ERROR]: jsonContent(
+      serverErrorSchema,
+      HttpStatusPhrases.INTERNAL_SERVER_ERROR,
+    ),
+  },
+});
+
+export const getOne = createProtectedRoute({
+   method: "get",
+  tags: ["{{routeName}}s"],
+  path: "/{{routeName}}s/:id",
+  description: "List all {{routeName}}s",
+  summary: `List all {{routeName}}s`,
+  request: {
     params: z.object({
+      id: z.string(),
     }),
   },
-  description: '',
-  summary: '',
-  //TODO: PROVIDE A PATH!
-  path: '',
-   //TODO: PROVIDE REPSONSES!
   responses: {
-    [HttpStatusCodes.OK]: jsonContent(multipleItemsResponseSchema({...}), 'List of match metadata'),
-    [HttpStatusCodes.INTERNAL_SERVER_ERROR]: jsonContent(serverErrorSchema, HttpStatusPhrases.INTERNAL_SERVER_ERROR),
+    [HttpStatusCodes.OK]: jsonContent(
+      singleItemResponseSchema(z.string()),
+      HttpStatusPhrases.OK,
+    ),
+    [HttpStatusCodes.INTERNAL_SERVER_ERROR]: jsonContent(
+      serverErrorSchema,
+      HttpStatusPhrases.INTERNAL_SERVER_ERROR,
+    ),
   },
-})
-
-export type {{toPascalCase routeName}}Route = typeof defaultRoute
+});

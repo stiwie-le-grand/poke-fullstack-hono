@@ -13,7 +13,8 @@
     "format-check": "pnpm --filter=./apps/* format-check",
     "test": "pnpm --filter=./apps/* test",
     "build": "pnpm --filter=./apps/* build",
-    "check-all": "pnpm lint && pnpm type-check && pnpm format-check && pnpm test"
+    "check-all": "pnpm lint && pnpm type-check && pnpm format-check && pnpm test",
+    "gen": "cross-env NODE_OPTIONS='--import tsx' plop --plopfile=tools/plop/plopfile.ts"
   },
   "keywords": [],
   "author": "",
