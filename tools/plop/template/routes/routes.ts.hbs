@@ -1,5 +1,4 @@
 import { createRoute, z } from "@hono/zod-openapi";
-import { createProtectedRoute } from "../../lib/createProtectedRoute";
 import {
   jsonContent,
   multipleItemsResponseSchema,
@@ -18,29 +17,6 @@ export const listUnauthenticated = createRoute({
   responses: {
     [HttpStatusCodes.OK]: jsonContent(
       multipleItemsResponseSchema(z.string()),
-      HttpStatusPhrases.OK,
-    ),
-    [HttpStatusCodes.INTERNAL_SERVER_ERROR]: jsonContent(
-      serverErrorSchema,
-      HttpStatusPhrases.INTERNAL_SERVER_ERROR,
-    ),
-  },
-});
-
-export const getOne = createProtectedRoute({
-   method: "get",
-  tags: ["{{routeName}}s"],
-  path: "/{{routeName}}s/:id",
-  description: "List all {{routeName}}s",
-  summary: `List all {{routeName}}s`,
-  request: {
-    params: z.object({
-      id: z.string(),
-    }),
-  },
-  responses: {
-    [HttpStatusCodes.OK]: jsonContent(
-      singleItemResponseSchema(z.string()),
       HttpStatusPhrases.OK,
     ),
     [HttpStatusCodes.INTERNAL_SERVER_ERROR]: jsonContent(

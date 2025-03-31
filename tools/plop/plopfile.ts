@@ -14,11 +14,17 @@ module.exports = function (plop: NodePlopAPI) {
   const rootDir = path.resolve(__dirname, "../../");
   const appsDir = path.resolve(__dirname, `${rootDir}/apps`);
 
-  // const currentDir = process.env.INIT_CWD!;
+  /* APPS that should NOT be listed as available options */
+  const appsBlockList = ["client"];
 
-  const apps = fs.readdirSync(appsDir).filter((file) => {
-    return fs.statSync(path.join(appsDir, file)).isDirectory();
-  });
+  const apps = fs
+    .readdirSync(appsDir)
+    .filter((file) => {
+      return fs.statSync(path.join(appsDir, file)).isDirectory();
+    })
+    .filter((file) => {
+      return !appsBlockList.includes(file);
+    });
 
   //convert existing apps to object
   const appsObj: Record<string, string> = apps.reduce((acc, app) => {
