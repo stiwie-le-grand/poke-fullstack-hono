@@ -32,10 +32,12 @@ Ensure you have the following installed:
 Clone the repository and install dependencies:
 
 ```sh
-git clone https://github.com/stiwie-le-grand/hono-mono-starter
-cd hono-mono-starter
+git clone https://github.com/stiwie-le-grand/poke-fullstack-hono
+cd poke-fullstack-hono
 pnpm install
 ```
+
+**If you do not have pnpm installed** you can find instructions here to install it: [install-pnpm](https://pnpm.io/installation)
 
 ### Running the Project
 
