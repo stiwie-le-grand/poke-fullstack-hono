@@ -1,8 +1,10 @@
-import { createRoute } from "../../app";
-import * as handlers from './{{routeName}}.handlers';
-import * as routes from './{{routeName}}.routes'; 
+import { createPartialApp } from "../../lib/createApp";
+import { {{toPascalCase routeName}}Controller } from "./{{routeName}}.controller";
+import * as routes from "./{{routeName}}.routes";
+const router = createPartialApp();
 
-const router = createRoute(); 
-router.openapi(routes.defaultRoute, handlers.defaultHandler); 
+const {{routeName}}Controller = new {{toPascalCase routeName}}Controller();
+
+router.openapi(routes.listUnauthenticated, {{routeName}}Controller.list{{routeName}});
 
 export const {{routeName}}Router = router;

@@ -1,0 +1,29 @@
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
+import eslintConfigPrettier from "eslint-config-prettier";
+
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  { ignores: ["**/node_modules/*", "**/tests/*", "**/dist/*", "**/tools/*"] },
+  {
+    files: ["**/*.{js,mjs,cjs,ts,mts}"],
+    languageOptions: {
+      // common parser options, enable TypeScript and JSX
+      parser: "@typescript-eslint/parser",
+      parserOptions: {
+        sourceType: "module",
+      },
+    },
+  },
+  { languageOptions: { globals: globals.browser } },
+  {
+    rules: {
+      "no-unused-vars": "error",
+      "no-console": ["error", { allow: ["error"] }],
+    },
+  },
+  eslintConfigPrettier,
+  pluginJs.configs.recommended,
+  ...tseslint.configs.recommended,
+];

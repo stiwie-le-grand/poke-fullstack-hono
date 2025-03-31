@@ -1,0 +1,21 @@
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { {{filename}} } from './{{filename}}';
+import { mockClient } from 'aws-sdk-client-mock';
+import { DynamoDBDocumentClient } from '@aws-sdk/lib-dynamodb';
+
+const ddbMock = mockClient(DynamoDBDocumentClient);
+
+beforeEach(() => {
+  ddbMock.reset();
+});
+
+afterEach(() => {
+  vi.restoreAllMocks();
+})
+
+describe('{{filename}}', () => {
+  it('should work correctly', () => {
+    // Add your test cases here
+    expect(true).toBe(true);
+  });
+});

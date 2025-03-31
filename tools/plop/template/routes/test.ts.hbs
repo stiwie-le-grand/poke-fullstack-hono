@@ -1,1 +1,22 @@
-// Tests for the {{routeName}} route
+import { describe, expect, it, vi } from "vitest";
+import { {{routeName}}Router } from "./index";
+
+vi.mock("./{{routeName}}.service", () => {
+  return {
+    {{toPascalCase routeName}}Service: vi.fn().mockImplementation(() => {
+      return {
+        list{{routeName}}s: vi.fn().mockResolvedValue(["MOCK-1"]),
+      };
+    }),
+  };
+});
+
+describe("GET /scenarios", () => {
+  it("should return a list of {{routeName}}s", async () => {
+    const response = await {{routeName}}Router.request(`/{{routeName}}s`);
+    const result = await response.json();
+
+    expect(result.items.length).toBe(1);
+    expect(result.items[0]).toBe("MOCK-1");
+  });
+});

@@ -1,0 +1,7 @@
+export class {{toPascalCase routeName}}Service {
+  public list{{routeName}}s = async () => {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    return ["{{routeName}}-1", "{{routeName}}-2", "{{routeName}}-3"];
+  };
+}

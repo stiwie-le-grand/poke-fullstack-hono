@@ -1,8 +1,0 @@
-import { AppRouteHandler } from "../../types/App";
-import type { {{toPascalCase routeName}}Route } from './{{routeName}}.routes'
-import * as HttpStatusCodes from "../../lib/httpStatusCodes";
-import * as HttpStatusPhrases from "../../lib/httpStatusPhrases";
-
-export const defaultHandler: AppRouteHandler<{{toPascalCase routeName}}Route> = async (c) => {
-  return c.json({ items: [] }, HttpStatusCodes.OK)
-}
